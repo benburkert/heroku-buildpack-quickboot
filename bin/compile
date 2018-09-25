@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+set -x
+
+build_dir=$1
+
+base_dir="$(dirname "$0")"
+lib_dir="${base_dir}/../lib"
+criu="${base_dir}/../criu"
+
+LD_PRELOAD="${lib_dir}/libnet.so.1.7.0:${lib_dir}/libprotobuf-c.so.0.0.0" $criu check
