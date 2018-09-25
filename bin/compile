@@ -9,4 +9,4 @@ base_dir="$(dirname "$0")"
 lib_dir="${base_dir}/../lib"
 criu="${base_dir}/../criu"
 
-LD_PRELOAD="${lib_dir}/libnet.so.1.7.0:${lib_dir}/libprotobuf-c.so.0.0.0" $criu check
+LD_PRELOAD="${lib_dir}/libnet.so.1.7.0:${lib_dir}/libnl-3.so.200.16.1:${lib_dir}/libprotobuf-c.so.0.0.0" $criu check
