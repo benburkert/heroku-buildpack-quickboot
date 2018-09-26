@@ -18,9 +18,6 @@ mkdir -p "${build_dir}/.profile.d"
 cat << 'EOF' > "${build_dir}/.profile.d/quickboot.sh"
 #!/bin/sh
 
-set -e
-set -x
-
 quickboot_dir="/app/.quickboot"
 criu="${quickboot_dir}/criu"
 lib_dir="${quickboot_dir}/lib"
@@ -36,7 +33,7 @@ quickboot_dir="/app/.quickboot"
 criu="${quickboot_dir}/criu"
 lib_dir="${quickboot_dir}/lib"
 
-exec LD_PRELOAD="${lib_dir}/libnet.so.1.7.0:${lib_dir}/libnl-3.so.200.16.1:${lib_dir}/libprotobuf-c.so.0.0.0" $criu $@
+LD_PRELOAD="${lib_dir}/libnet.so.1.7.0:${lib_dir}/libnl-3.so.200.16.1:${lib_dir}/libprotobuf-c.so.0.0.0" exec $criu $@
 EOF
 
 chmod +x "${build_dir}/bin/criu"
