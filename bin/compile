@@ -4,9 +4,27 @@ set -e
 set -x
 
 build_dir=$1
+quickboot_dir="${build_dir}/.quickboot"
 
 base_dir="$(dirname "$0")"
 lib_dir="${base_dir}/../lib"
 criu="${base_dir}/../criu"
 
+mkdir "${quickboot_dir}"
+cp "${criu}" "${quickboot_dir}/criu"
+cp -R "${lib_dir}" "${quickboot_dir}/lib"
+
+mkdir "${build_dir}/.profile.d"
+cat << 'EOF' > "${build_dir}/.profile.d/quickboot.sh"
+#!/bin/sh
+
+set -e
+set -x
+
+app_dir="$(readlink --canonicalize $(dirname "$0"))"
+quickboot_dir="${app_dir}/.quickboot"
+criu="${quickboot_dir}/criu"
+lib_dir="${quickboot_dir}/lib"
+
 LD_PRELOAD="${lib_dir}/libnet.so.1.7.0:${lib_dir}/libnl-3.so.200.16.1:${lib_dir}/libprotobuf-c.so.0.0.0" $criu check
+EOF
