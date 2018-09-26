@@ -10,11 +10,11 @@ base_dir="$(dirname "$0")"
 lib_dir="${base_dir}/../lib"
 criu="${base_dir}/../criu"
 
-mkdir "${quickboot_dir}"
+mkdir -p "${quickboot_dir}"
 cp "${criu}" "${quickboot_dir}/criu"
 cp -R "${lib_dir}" "${quickboot_dir}/lib"
 
-mkdir "${build_dir}/.profile.d"
+mkdir -p "${build_dir}/.profile.d"
 cat << 'EOF' > "${build_dir}/.profile.d/quickboot.sh"
 #!/bin/sh
 
