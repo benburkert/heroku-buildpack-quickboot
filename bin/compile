@@ -21,8 +21,7 @@ cat << 'EOF' > "${build_dir}/.profile.d/quickboot.sh"
 set -e
 set -x
 
-app_dir="$(readlink --canonicalize $(dirname "$0"))"
-quickboot_dir="${app_dir}/.quickboot"
+quickboot_dir="/app/.quickboot"
 criu="${quickboot_dir}/criu"
 lib_dir="${quickboot_dir}/lib"
 
