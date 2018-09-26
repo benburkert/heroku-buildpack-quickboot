@@ -25,5 +25,5 @@ quickboot_dir="/app/.quickboot"
 criu="${quickboot_dir}/criu"
 lib_dir="${quickboot_dir}/lib"
 
-LD_PRELOAD="${lib_dir}/libnet.so.1.7.0:${lib_dir}/libnl-3.so.200.16.1:${lib_dir}/libprotobuf-c.so.0.0.0" $criu check
+# LD_PRELOAD="${lib_dir}/libnet.so.1.7.0:${lib_dir}/libnl-3.so.200.16.1:${lib_dir}/libprotobuf-c.so.0.0.0" $criu check
 EOF
